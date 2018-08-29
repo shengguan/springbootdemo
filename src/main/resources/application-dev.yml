@@ -1,0 +1,10 @@
+server:
+  port: 8081
+  tomcat:
+      uri-encoding: utf-8
+girl:
+  age: 18
+  cupsize: B
+
+
+  
