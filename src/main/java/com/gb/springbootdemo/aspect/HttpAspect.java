@@ -26,24 +26,25 @@ public class HttpAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         //获取IP
-        logger.info("IP = {}" , request.getRemoteAddr());
+        logger.info("IP = {}", request.getRemoteAddr());
         //获取方法
-        logger.info("method = {}" , request.getMethod());
+        logger.info("method = {}", request.getMethod());
         //获取请求地址
-        logger.info("url = {}" ,request.getRequestURL());
+        logger.info("url = {}", request.getRequestURL());
         //获取请求方法
-        logger.info("class_method={}" ,joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+        logger.info("class_method={}", joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
         //获取参数
-        logger.info("args={}" ,joinPoint.getArgs());
+        logger.info("args={}", joinPoint.getArgs());
 
     }
+
     @After("log()")
-    public void doAfter(){
+    public void doAfter() {
         logger.info("22222");
     }
 
-    @AfterReturning(returning = "object",pointcut = "log()")
-    public void doAfterReturning(Object object){
+    @AfterReturning(returning = "object", pointcut = "log()")
+    public void doAfterReturning(Object object) {
         logger.info(object.toString());
     }
 

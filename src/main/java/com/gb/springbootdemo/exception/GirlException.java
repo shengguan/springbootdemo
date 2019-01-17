@@ -3,13 +3,13 @@ package com.gb.springbootdemo.exception;
 import com.gb.springbootdemo.enums.ResultEnums;
 
 /**
- *  spring只会抛出RunTimeException  所以需要继承RunTimeException
+ * spring只会抛出RunTimeException  所以需要继承RunTimeException
  */
 public class GirlException extends RuntimeException {
 
-    private  Integer code;
+    private Integer code;
 
-    public GirlException(ResultEnums resultEnums){
+    public GirlException(ResultEnums resultEnums) {
         super(resultEnums.getMsg());
         this.code = resultEnums.getCode();
     }

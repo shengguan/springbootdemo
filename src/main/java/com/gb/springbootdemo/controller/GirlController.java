@@ -5,6 +5,9 @@ import com.gb.springbootdemo.utils.ResultUtil;
 import com.gb.springbootdemo.repository.GirlRepository;
 import com.gb.springbootdemo.bean.Girl;
 import com.gb.springbootdemo.service.GirlService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
+@Api(tags = "女生相关操作接口")
 @RestController
 public class GirlController {
 
@@ -29,6 +32,7 @@ public class GirlController {
      *
      * @return
      */
+    @ApiOperation(value = "增加女生信息" ,notes = "新增一个女生")
     @PostMapping(value = "/girl")
     public Object addGirl(@Valid Girl girl, BindingResult bindingResult) {
         logger.info("age = " + girl.getAge() + ", cupSize = " + girl.getCupSize());
@@ -57,6 +61,7 @@ public class GirlController {
      *
      * @return
      */
+    @ApiOperation(value = "根据id获取女生信息")
     @PostMapping(value = "/girl/{id}")
     public Result updateGirl(@Valid Girl girl, BindingResult bindingResult) {
         logger.info("age = " + girl.getAge() + ", cupSize = " + girl.getCupSize());
@@ -71,6 +76,7 @@ public class GirlController {
     /**
      * 插入2个数据  测试回滚
      */
+    @ApiOperation(value ="插入2个女生的信息" , notes = "后台自动插入，无需传参")
     @PostMapping("/girl/two")
     public void insertTwo() {
 
@@ -82,6 +88,7 @@ public class GirlController {
      *
      * @return
      */
+    @ApiOperation(value = "根据id获取女生信息")
     @GetMapping(value = "/girl/{id}")
     public Girl girlFindOne(@PathVariable("id") Integer id) {
         return girlRepository.findById(id).get();
@@ -92,6 +99,7 @@ public class GirlController {
      *
      * @return
      */
+    @ApiOperation(value = "获取所有女生的信息")
     @GetMapping(value = "/girls")
     public Result queryAllGirl() {
         return ResultUtil.success("查询所有女生成功", girlRepository.findAll());
@@ -114,10 +122,11 @@ public class GirlController {
         return ResultUtil.success("通过年龄查询成功", girls);
     }
 
+    @ApiOperation(value = "")
     @PostMapping(value = "/girl/find")
-    public Result queryGirlByAgeAndId(@RequestParam("id") Integer id, @RequestParam("age") Integer age,BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
-            return ResultUtil.error(100, bindingResult.getFieldError().getDefaultMessage());
+    public Result queryGirlByAgeAndId(@RequestParam("id") Integer id, @RequestParam("age") Integer age, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResultUtil.error(2, bindingResult.getFieldError().getDefaultMessage());
         }
 
         List<Girl> girls = girlRepository.findByAgeAndId(id, age);

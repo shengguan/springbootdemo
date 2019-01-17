@@ -2,11 +2,15 @@ package com.gb.springbootdemo.controller;
 
 import com.gb.springbootdemo.bean.User;
 import com.gb.springbootdemo.propertites.GirlProperties;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.swing.text.TabableView;
+
+@Api(tags = "User 相关操作接口")
 @RestController
 public class UserController {
 

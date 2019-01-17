@@ -32,5 +32,4 @@ public class GirlProperties {
     private String cupSize;
 
 
-
 }

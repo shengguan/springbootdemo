@@ -18,8 +18,8 @@ public class UserBean {
 
     private String password;
 
-    @Min(value = 0,message = "年龄必须大于0")
-    @Max(value = 200,message = "年龄超出")
+    @Min(value = 0, message = "年龄必须大于0")
+    @Max(value = 200, message = "年龄超出")
     private Integer age;
 
 

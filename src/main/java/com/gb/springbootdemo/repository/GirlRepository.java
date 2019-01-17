@@ -12,7 +12,7 @@ public interface GirlRepository extends JpaRepository<Girl, Integer> {
 
     void deleteByAge(Integer age);
 
-    List<Girl> findByAgeAndId(Integer id,Integer age);
+    List<Girl> findByAgeAndId(Integer id, Integer age);
 
 
 }

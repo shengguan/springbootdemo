@@ -20,9 +20,8 @@ public class ExceptionHandle {
         if (e instanceof GirlException) {
             GirlException girlException = (GirlException) e;
             return ResultUtil.error(girlException.getCode(), girlException.getMessage());
-        }
-        else {
-            logger.error("【系统异常】{}", e);
+        } else {
+            logger.error("【系统异常】{}", e.getMessage());
             return ResultUtil.error(-1, e.getMessage());
         }
     }

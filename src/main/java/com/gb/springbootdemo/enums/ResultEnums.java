@@ -1,10 +1,10 @@
 package com.gb.springbootdemo.enums;
 
-public enum  ResultEnums {
-    UNKNOWN(-1,"服务器内部错误"),
-    SUCCESS(0,"成功"),
-    PRIMARYSCHOOL(100,"我猜你在上小学"),
-    HIGHSCHOOL(101,"我猜你在上中学");
+public enum ResultEnums {
+    UNKNOWN(-1, "服务器内部错误"),
+    SUCCESS(0, "成功"),
+    PRIMARYSCHOOL(100, "我猜你在上小学"),
+    HIGHSCHOOL(101, "我猜你在上中学");
 
 
     ResultEnums(Integer code, String msg) {
